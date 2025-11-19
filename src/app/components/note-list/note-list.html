@@ -1,0 +1,34 @@
+<div class="notes-container">
+  <div class="notes-header">
+    <h2>My Notes ({{ notes.length }})</h2>
+    <button (click)="onCreateNote()" class="btn btn-primary">+ New Note</button>
+  </div>
+
+  @if (notes.length > 0) {
+  <div class="notes-grid">
+    @for (note of notes; track note.id) {
+    <div class="note-card" [style.background]="note.color || '#ffffff'" (click)="onEditNote(note)">
+      <div class="note-header">
+        <h3 class="note-title">{{ note.title || 'Untitled Note' }}</h3>
+        <button (click)="onDeleteNote(note.id, $event)" class="delete-btn" title="Delete note">
+          ×
+        </button>
+      </div>
+
+      <p class="note-preview">{{ getPreview(note.content) }}</p>
+
+      <div class="note-footer">
+        <span class="note-date">{{ formatDate(note.updatedAt) }}</span>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="empty-state">
+    <div class="empty-icon">📝</div>
+    <h3>No notes yet</h3>
+    <p>Create your first note to get started!</p>
+    <button (click)="onCreateNote()" class="btn btn-primary">Create Your First Note</button>
+  </div>
+  }
+</div>

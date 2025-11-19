@@ -1,0 +1,36 @@
+<div class="editor-container">
+  <div class="editor-header">
+    <h2>{{ note ? 'Edit Note' : 'New Note' }}</h2>
+    <div class="color-picker">
+      <label>Color:</label>
+      <input
+        type="color"
+        [value]="color"
+        (change)="onColorChange($event.target.value)"
+        class="color-input"
+      />
+    </div>
+  </div>
+
+  <div class="editor-form">
+    <input type="text" [(ngModel)]="title" placeholder="Note title..." class="title-input" />
+
+    <textarea
+      [(ngModel)]="content"
+      placeholder="Start writing your note here..."
+      class="content-textarea"
+      rows="15"
+    ></textarea>
+
+    <div class="editor-actions">
+      <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+      <button
+        (click)="onSave()"
+        class="btn btn-primary"
+        [disabled]="!title.trim() && !content.trim()"
+      >
+        {{ note ? 'Update' : 'Create' }}
+      </button>
+    </div>
+  </div>
+</div>

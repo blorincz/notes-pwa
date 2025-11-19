@@ -1,0 +1,14 @@
+<div class="search-container">
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      placeholder="Search notes..."
+      class="search-input"
+    />
+    @if (searchTerm) {
+    <button (click)="onClear()" class="clear-btn" title="Clear search">×</button>
+    }
+  </div>
+</div>
