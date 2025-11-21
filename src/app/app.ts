@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Note } from './models/note.model';
 import { NotesService } from './services/notes.service';
@@ -13,7 +12,6 @@ import { SearchBar } from './components/search-bar/search-bar';
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet,
     FormsModule,
     NoteEditor, // Not NoteEditorComponent
     NoteList, // Not NoteListComponent
@@ -72,7 +70,11 @@ export class App {
     if (this.selectedNote) {
       this.notesService.updateNote(this.selectedNote.id, updatedNote);
     } else {
-      this.notesService.createNote(updatedNote.title, updatedNote.content);
+      this.notesService.createNote(
+        updatedNote.title,
+        updatedNote.content,
+        updatedNote.color || '#ffffff' // Pass the color
+      );
     }
 
     this.isEditing = false;

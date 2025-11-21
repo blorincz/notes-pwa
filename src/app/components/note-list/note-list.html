@@ -8,6 +8,10 @@
   <div class="notes-grid">
     @for (note of notes; track note.id) {
     <div class="note-card" [style.background]="note.color || '#ffffff'" (click)="onEditNote(note)">
+      <!-- Debug: show the actual color value -->
+      <div class="debug-color" *ngIf="false" style="font-size: 10px; color: #666">
+        Color: {{ note.color }}
+      </div>
       <div class="note-header">
         <h3 class="note-title">{{ note.title || 'Untitled Note' }}</h3>
         <button (click)="onDeleteNote(note.id, $event)" class="delete-btn" title="Delete note">

@@ -3,12 +3,15 @@
     <h2>{{ note ? 'Edit Note' : 'New Note' }}</h2>
     <div class="color-picker">
       <label>Color:</label>
-      <input
-        type="color"
-        [value]="color"
-        (change)="onColorChange($event.target.value)"
-        class="color-input"
-      />
+      <div class="color-display">
+        <input
+          type="color"
+          [value]="color"
+          (change)="onColorChange($event.target?.value || '#ffffff')"
+          class="color-input"
+        />
+        <span class="color-value">{{ color }}</span>
+      </div>
     </div>
   </div>
 

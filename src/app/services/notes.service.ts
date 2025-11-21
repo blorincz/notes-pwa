@@ -52,8 +52,9 @@ export class NotesService {
   }
 
   // Create new note
-  createNote(title: string = 'New Note', content: string = ''): Note {
+  createNote(title: string = 'New Note', content: string = '', color: string = '#ffffff'): Note {
     const newNote = new NoteModel(title, content);
+    newNote.color = color; // Ensure color is set
     this.notes.push(newNote);
     this.saveNotes();
     return newNote;

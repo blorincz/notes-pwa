@@ -38,7 +38,7 @@ export class NoteEditor implements OnChanges {
         content: this.content.trim(),
         color: this.color,
       };
-
+      console.log('Saving note with color:', this.color); // Debug log
       this.save.emit(updatedNote as Note);
     }
   }
